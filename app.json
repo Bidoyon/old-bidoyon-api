@@ -1,0 +1,17 @@
+{
+  "name": "Jus de Pomme API",
+  "description": "Jus de Pomme API",
+  "image": "heroku/python",
+  "repository": "https://github.com/Bidulman/jus-de-pomme-api",
+  "keywords": ["python"],
+  "addons": [],
+  "env": {}
+  },
+  "environments": {
+    "main": {
+      "scripts": {
+        "run": "python run.py",
+      }
+    }
+  }
+}
