@@ -25,3 +25,12 @@ class NewPressing(BaseModel):
     number: Optional[int] = None
     added_juice: Optional[int] = 0
     added_apples: Optional[int] = 0
+
+
+class NewInvestment(BaseModel):
+    username: str
+    apples: Optional[int] = 0
+
+
+class Investor(BaseModel):
+    username: Optional[str] = ""

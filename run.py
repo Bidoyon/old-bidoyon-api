@@ -1,6 +1,6 @@
 from uvicorn import run
 
-HOST = "localhost"
+HOST = "0.0.0.0"
 PORT = 8000
 
 if __name__ == "__main__":
