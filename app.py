@@ -25,6 +25,7 @@ def fill_database():
         return
 
     cursor.execute("INSERT INTO pressings (juice, apples) VALUES (?, ?)", (0, 0))
+    cursor.execute("INSERT INTO users (username, password, permission, token) VALUES (?, ?, ?, ?)", ('admin', 'admin', 'admin', utils.token()))
 
 
 fill_database()
@@ -250,7 +251,7 @@ async def get_investments(investor: models.Investor):
 
         for value in cursor:
 
-            investments.append(value)
+            investments.append((value[0], value[1], round(value[1]/get_invested_apples()*get_produced_juice()) if get_produced_juice() else 0))
 
         return JSONResponse(investments, 200)
 
@@ -260,7 +261,7 @@ async def get_investments(investor: models.Investor):
 
         for value in cursor:
 
-            return JSONResponse({"username": value[0], "apples": value[1], "brings": round(value[1]/get_invested_apples()*get_produced_juice())}, 200)
+            return JSONResponse({"username": value[0], "apples": value[1], "brings": round(value[1]/get_invested_apples()*get_produced_juice()) if get_produced_juice() else 0}, 200)
 
         raise HTTPException(404, "Investment not found")
 
